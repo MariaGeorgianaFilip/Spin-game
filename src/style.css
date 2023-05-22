@@ -6,15 +6,19 @@
     margin: 0 auto;
   }
   
-  .safe {
-    border: 2px solid #ccc;
+  .cell {
+    border: 2px solid black;
     padding: 20px;
     text-align: center;
     font-size: 18px;
     cursor: pointer;
   }
   
-  .safe:hover {
+  .cell:hover {
     background-color: #f2f2f2;
   }
  
+  p { 
+    text-align: center;
+
+  }

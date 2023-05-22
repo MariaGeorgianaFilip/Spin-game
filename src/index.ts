@@ -5,22 +5,21 @@ let betAmount: number;
 let spinsRemaining = 4;
 let matchedMultipliers: number[] = [];
 
-// Function to reveal the multiplier in the safe
 function revealMultiplier(spunNumber: number) {
-    const multiplier = getMultiplier();
-    cells[spunNumber - 1].textContent = `x${multiplier}`;
-  }
+  const multiplier = getMultiplier();
+  cells[spunNumber - 1].textContent = `x${multiplier}`;
+}
   
-  // Function to reveal all multipliers
-  function revealAllMultipliers() {
-    cells.forEach((cell, index) => {
-      if (cell.textContent === '') {
-        const multiplier = getMultiplier();
-        cell.textContent = `x${multiplier}`;
-      }
+
+function revealAllMultipliers() {
+  cells.forEach((cell, index) => {
+    if (cell.textContent === '') {
+    const multiplier = getMultiplier();
+    cell.textContent = `x${multiplier}`;
+    }
     });
-  }
-// Function to handle key press
+}
+
 function handleKeyPress(event: KeyboardEvent) {
   if (event.key === ' ') {
     if (spinsRemaining > 0) {
@@ -38,14 +37,12 @@ function handleKeyPress(event: KeyboardEvent) {
   }
 }
   
-// Function to get a random multiplier
 function getMultiplier(): number {
   const availableMultipliers = [15, 16, 17, 18, 19, 20];
   const randomIndex = Math.floor(Math.random() * availableMultipliers.length);
   return availableMultipliers.splice(randomIndex, 1)[0];
 }
 
-// Function to check the win condition
 function checkWinCondition(spunNumber: number) {
   const multiplier = parseFloat(cells[spunNumber - 1].textContent!.substring(1));
   if (matchedMultipliers.includes(multiplier)) {
@@ -55,10 +52,10 @@ function checkWinCondition(spunNumber: number) {
   }
 }
 
-// Function to end the game
+
 function endGame() {
-    let maxMultiplier = 0;
-    if (matchedMultipliers.length >= 2) {
+  let maxMultiplier = 0;
+  if (matchedMultipliers.length >= 2) {
       matchedMultipliers.forEach(multiplier => {
         if (multiplier > maxMultiplier) {
           maxMultiplier = multiplier;
@@ -70,7 +67,7 @@ function endGame() {
       console.log('Game over. You did not match enough multipliers to win.');
     }
     document.removeEventListener('keypress', handleKeyPress);
-  }
+}
   
 function startGame() {
     const betAmountInput = prompt("Please enter your bet amount:");
